@@ -23,7 +23,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RolesApiAxiosParamCreator = exports.ReportsApi = exports.ReportsApiFactory = exports.ReportsApiFp = exports.ReportsApiAxiosParamCreator = exports.PaymentsApi = exports.PaymentsApiFactory = exports.PaymentsApiFp = exports.PaymentsApiAxiosParamCreator = exports.LocationsApi = exports.LocationsApiFactory = exports.LocationsApiFp = exports.LocationsApiAxiosParamCreator = exports.InsurersApi = exports.InsurersApiFactory = exports.InsurersApiFp = exports.InsurersApiAxiosParamCreator = exports.GearBoxTypesApi = exports.GearBoxTypesApiFactory = exports.GearBoxTypesApiFp = exports.GearBoxTypesApiAxiosParamCreator = exports.FaresApi = exports.FaresApiFactory = exports.FaresApiFp = exports.FaresApiAxiosParamCreator = exports.DelaysApi = exports.DelaysApiFactory = exports.DelaysApiFp = exports.DelaysApiAxiosParamCreator = exports.CranesApi = exports.CranesApiFactory = exports.CranesApiFp = exports.CranesApiAxiosParamCreator = exports.ClientsApi = exports.ClientsApiFactory = exports.ClientsApiFp = exports.ClientsApiAxiosParamCreator = exports.BasesApi = exports.BasesApiFactory = exports.BasesApiFp = exports.BasesApiAxiosParamCreator = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = exports.AnalyticsApi = exports.AnalyticsApiFactory = exports.AnalyticsApiFp = exports.AnalyticsApiAxiosParamCreator = exports.SirEventDtoEventTypeEnum = void 0;
-exports.VehicleWheelTypesApi = exports.VehicleWheelTypesApiFactory = exports.VehicleWheelTypesApiFp = exports.VehicleWheelTypesApiAxiosParamCreator = exports.VehicleTypesApi = exports.VehicleTypesApiFactory = exports.VehicleTypesApiFp = exports.VehicleTypesApiAxiosParamCreator = exports.VehicleBrandsApi = exports.VehicleBrandsApiFactory = exports.VehicleBrandsApiFp = exports.VehicleBrandsApiAxiosParamCreator = exports.VehicleBrandModelsApi = exports.VehicleBrandModelsApiFactory = exports.VehicleBrandModelsApiFp = exports.VehicleBrandModelsApiAxiosParamCreator = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TractionTypesApi = exports.TractionTypesApiFactory = exports.TractionTypesApiFp = exports.TractionTypesApiAxiosParamCreator = exports.TicketsApi = exports.TicketsApiFactory = exports.TicketsApiFp = exports.TicketsApiAxiosParamCreator = exports.SettlementsApi = exports.SettlementsApiFactory = exports.SettlementsApiFp = exports.SettlementsApiAxiosParamCreator = exports.SettingsApi = exports.SettingsApiFactory = exports.SettingsApiFp = exports.SettingsApiAxiosParamCreator = exports.RolesApi = exports.RolesApiFactory = exports.RolesApiFp = void 0;
+exports.VehicleWheelTypesApi = exports.VehicleWheelTypesApiFactory = exports.VehicleWheelTypesApiFp = exports.VehicleWheelTypesApiAxiosParamCreator = exports.VehicleTypesApi = exports.VehicleTypesApiFactory = exports.VehicleTypesApiFp = exports.VehicleTypesApiAxiosParamCreator = exports.VehicleColorsApi = exports.VehicleColorsApiFactory = exports.VehicleColorsApiFp = exports.VehicleColorsApiAxiosParamCreator = exports.VehicleBrandsApi = exports.VehicleBrandsApiFactory = exports.VehicleBrandsApiFp = exports.VehicleBrandsApiAxiosParamCreator = exports.VehicleBrandModelsApi = exports.VehicleBrandModelsApiFactory = exports.VehicleBrandModelsApiFp = exports.VehicleBrandModelsApiAxiosParamCreator = exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = exports.TractionTypesApi = exports.TractionTypesApiFactory = exports.TractionTypesApiFp = exports.TractionTypesApiAxiosParamCreator = exports.TicketsApi = exports.TicketsApiFactory = exports.TicketsApiFp = exports.TicketsApiAxiosParamCreator = exports.SettlementsApi = exports.SettlementsApiFactory = exports.SettlementsApiFp = exports.SettlementsApiAxiosParamCreator = exports.SettingsApi = exports.SettingsApiFactory = exports.SettingsApiFp = exports.SettingsApiAxiosParamCreator = exports.RolesApi = exports.RolesApiFactory = exports.RolesApiFp = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -2029,34 +2029,6 @@ const CranesApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
-         * @summary Get tickets for a crane
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cranesControllerTickets: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/cranes/tickets`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication bearer required
-            // http bearer authentication required
-            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *
          * @summary Unassign a crane from a user
          * @param {UnassignCraneDto} unassignCraneDto
          * @param {*} [options] Override http request option.
@@ -2330,21 +2302,6 @@ const CranesApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Get tickets for a crane
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cranesControllerTickets(options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.cranesControllerTickets(options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CranesApi.cranesControllerTickets']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         *
          * @summary Unassign a crane from a user
          * @param {UnassignCraneDto} unassignCraneDto
          * @param {*} [options] Override http request option.
@@ -2509,15 +2466,6 @@ const CranesApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Get tickets for a crane
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cranesControllerTickets(options) {
-            return localVarFp.cranesControllerTickets(options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
          * @summary Unassign a crane from a user
          * @param {UnassignCraneDto} unassignCraneDto
          * @param {*} [options] Override http request option.
@@ -2679,16 +2627,6 @@ class CranesApi extends base_1.BaseAPI {
      */
     cranesControllerRemove(id, options) {
         return (0, exports.CranesApiFp)(this.configuration).cranesControllerRemove(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Get tickets for a crane
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CranesApi
-     */
-    cranesControllerTickets(options) {
-        return (0, exports.CranesApiFp)(this.configuration).cranesControllerTickets(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -5744,6 +5682,34 @@ const TicketsApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary List all tickets that belong to a driver
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketsControllerFindTicketsByDriverId: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/tickets/by-driver`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication bearer required
+            // http bearer authentication required
+            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Get arrival time for a crane to a ticket
          * @param {string} ticketId
          * @param {string} craneId
@@ -6054,6 +6020,21 @@ const TicketsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary List all tickets that belong to a driver
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketsControllerFindTicketsByDriverId(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.ticketsControllerFindTicketsByDriverId(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['TicketsApi.ticketsControllerFindTicketsByDriverId']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Get arrival time for a crane to a ticket
          * @param {string} ticketId
          * @param {string} craneId
@@ -6225,6 +6206,15 @@ const TicketsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary List all tickets that belong to a driver
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        ticketsControllerFindTicketsByDriverId(options) {
+            return localVarFp.ticketsControllerFindTicketsByDriverId(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Get arrival time for a crane to a ticket
          * @param {string} ticketId
          * @param {string} craneId
@@ -6371,6 +6361,16 @@ class TicketsApi extends base_1.BaseAPI {
      */
     ticketsControllerFindTickets(options) {
         return (0, exports.TicketsApiFp)(this.configuration).ticketsControllerFindTickets(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary List all tickets that belong to a driver
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TicketsApi
+     */
+    ticketsControllerFindTicketsByDriverId(options) {
+        return (0, exports.TicketsApiFp)(this.configuration).ticketsControllerFindTicketsByDriverId(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -7720,6 +7720,170 @@ class VehicleBrandsApi extends base_1.BaseAPI {
     }
 }
 exports.VehicleBrandsApi = VehicleBrandsApi;
+/**
+ * VehicleColorsApi - axios parameter creator
+ * @export
+ */
+const VehicleColorsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Create vehicle color
+         * @param {CreateVehicleColorDto} createVehicleColorDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        vehicleColorsControllerCreate: (createVehicleColorDto_1, ...args_1) => __awaiter(this, [createVehicleColorDto_1, ...args_1], void 0, function* (createVehicleColorDto, options = {}) {
+            // verify required parameter 'createVehicleColorDto' is not null or undefined
+            (0, common_1.assertParamExists)('vehicleColorsControllerCreate', 'createVehicleColorDto', createVehicleColorDto);
+            const localVarPath = `/vehicle-colors`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(createVehicleColorDto, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary List all vehicle colors
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        vehicleColorsControllerFindAll: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/vehicle-colors`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.VehicleColorsApiAxiosParamCreator = VehicleColorsApiAxiosParamCreator;
+/**
+ * VehicleColorsApi - functional programming interface
+ * @export
+ */
+const VehicleColorsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.VehicleColorsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Create vehicle color
+         * @param {CreateVehicleColorDto} createVehicleColorDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        vehicleColorsControllerCreate(createVehicleColorDto, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.vehicleColorsControllerCreate(createVehicleColorDto, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VehicleColorsApi.vehicleColorsControllerCreate']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary List all vehicle colors
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        vehicleColorsControllerFindAll(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.vehicleColorsControllerFindAll(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VehicleColorsApi.vehicleColorsControllerFindAll']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.VehicleColorsApiFp = VehicleColorsApiFp;
+/**
+ * VehicleColorsApi - factory interface
+ * @export
+ */
+const VehicleColorsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.VehicleColorsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Create vehicle color
+         * @param {CreateVehicleColorDto} createVehicleColorDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        vehicleColorsControllerCreate(createVehicleColorDto, options) {
+            return localVarFp.vehicleColorsControllerCreate(createVehicleColorDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary List all vehicle colors
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        vehicleColorsControllerFindAll(options) {
+            return localVarFp.vehicleColorsControllerFindAll(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.VehicleColorsApiFactory = VehicleColorsApiFactory;
+/**
+ * VehicleColorsApi - object-oriented interface
+ * @export
+ * @class VehicleColorsApi
+ * @extends {BaseAPI}
+ */
+class VehicleColorsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Create vehicle color
+     * @param {CreateVehicleColorDto} createVehicleColorDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VehicleColorsApi
+     */
+    vehicleColorsControllerCreate(createVehicleColorDto, options) {
+        return (0, exports.VehicleColorsApiFp)(this.configuration).vehicleColorsControllerCreate(createVehicleColorDto, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary List all vehicle colors
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VehicleColorsApi
+     */
+    vehicleColorsControllerFindAll(options) {
+        return (0, exports.VehicleColorsApiFp)(this.configuration).vehicleColorsControllerFindAll(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.VehicleColorsApi = VehicleColorsApi;
 /**
  * VehicleTypesApi - axios parameter creator
  * @export

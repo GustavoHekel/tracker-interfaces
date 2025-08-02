@@ -504,22 +504,22 @@ export interface CreateTicketDto {
     'insurerId': number;
     /**
      *
-     * @type {string}
+     * @type {number}
      * @memberof CreateTicketDto
      */
-    'vehicleTypeId': string;
+    'vehicleTypeId': number;
     /**
      *
-     * @type {string}
+     * @type {number}
      * @memberof CreateTicketDto
      */
-    'vehicleBrandId': string;
+    'vehicleBrandId': number;
     /**
      *
-     * @type {string}
+     * @type {number}
      * @memberof CreateTicketDto
      */
-    'vehicleBrandModelId': string;
+    'vehicleBrandModelId': number;
     /**
      *
      * @type {number}
@@ -781,6 +781,19 @@ export interface CreateVehicleBrandModelDto {
      * @memberof CreateVehicleBrandModelDto
      */
     'vehicleBrandId': number;
+}
+/**
+ *
+ * @export
+ * @interface CreateVehicleColorDto
+ */
+export interface CreateVehicleColorDto {
+    /**
+     *
+     * @type {string}
+     * @memberof CreateVehicleColorDto
+     */
+    'name': string;
 }
 /**
  *
@@ -1151,6 +1164,12 @@ export interface Ticket {
     'ticketStatusId': number;
     /**
      *
+     * @type {TicketStatus}
+     * @memberof Ticket
+     */
+    'ticketStatus': TicketStatus;
+    /**
+     *
      * @type {number}
      * @memberof Ticket
      */
@@ -1163,10 +1182,22 @@ export interface Ticket {
     'ticketTypeId': number;
     /**
      *
+     * @type {TicketType}
+     * @memberof Ticket
+     */
+    'ticketType': TicketType;
+    /**
+     *
      * @type {number}
      * @memberof Ticket
      */
     'clientId': number;
+    /**
+     *
+     * @type {Client}
+     * @memberof Ticket
+     */
+    'client': Client;
     /**
      *
      * @type {string}
@@ -1187,22 +1218,34 @@ export interface Ticket {
     'insurerId': number;
     /**
      *
-     * @type {string}
+     * @type {Insurer}
      * @memberof Ticket
      */
-    'vehicleTypeId': string;
+    'insurer': Insurer;
     /**
      *
-     * @type {string}
+     * @type {number}
      * @memberof Ticket
      */
-    'vehicleBrandId': string;
+    'vehicleTypeId': number;
     /**
      *
-     * @type {string}
+     * @type {VehicleType}
      * @memberof Ticket
      */
-    'vehicleBrandModelId': string;
+    'vehicleType': VehicleType;
+    /**
+     *
+     * @type {number}
+     * @memberof Ticket
+     */
+    'vehicleBrandId': number;
+    /**
+     *
+     * @type {number}
+     * @memberof Ticket
+     */
+    'vehicleBrandModelId': number;
     /**
      *
      * @type {number}
@@ -1233,6 +1276,12 @@ export interface Ticket {
      * @memberof Ticket
      */
     'vehicleTractionTypeId': number;
+    /**
+     *
+     * @type {TractionType}
+     * @memberof Ticket
+     */
+    'vehicleTractionType': TractionType;
     /**
      *
      * @type {number}
@@ -1271,10 +1320,22 @@ export interface Ticket {
     'delayValueId': number;
     /**
      *
+     * @type {DelayValue}
+     * @memberof Ticket
+     */
+    'delayValue': DelayValue;
+    /**
+     *
      * @type {number}
      * @memberof Ticket
      */
     'paymentTypeId': number;
+    /**
+     *
+     * @type {PaymentType}
+     * @memberof Ticket
+     */
+    'paymentType': PaymentType;
     /**
      *
      * @type {number}
@@ -1301,10 +1362,22 @@ export interface Ticket {
     'originPlaceId': number;
     /**
      *
+     * @type {object}
+     * @memberof Ticket
+     */
+    'originPlace': object;
+    /**
+     *
      * @type {number}
      * @memberof Ticket
      */
     'destinationPlaceId': number;
+    /**
+     *
+     * @type {object}
+     * @memberof Ticket
+     */
+    'destinationPlace': object;
     /**
      *
      * @type {number}
@@ -1319,10 +1392,10 @@ export interface Ticket {
     'userId': number;
     /**
      *
-     * @type {object}
+     * @type {User}
      * @memberof Ticket
      */
-    'metadataJson': object;
+    'user': User;
     /**
      *
      * @type {number}
@@ -1413,6 +1486,68 @@ export interface Ticket {
      * @memberof Ticket
      */
     'ordinalInDay': string;
+}
+/**
+ *
+ * @export
+ * @interface TicketStatus
+ */
+export interface TicketStatus {
+    /**
+     *
+     * @type {number}
+     * @memberof TicketStatus
+     */
+    'id': number;
+    /**
+     *
+     * @type {string}
+     * @memberof TicketStatus
+     */
+    'name': string;
+    /**
+     *
+     * @type {string}
+     * @memberof TicketStatus
+     */
+    'createdAt': string;
+    /**
+     *
+     * @type {string}
+     * @memberof TicketStatus
+     */
+    'updatedAt': string;
+}
+/**
+ *
+ * @export
+ * @interface TicketType
+ */
+export interface TicketType {
+    /**
+     *
+     * @type {number}
+     * @memberof TicketType
+     */
+    'id': number;
+    /**
+     *
+     * @type {string}
+     * @memberof TicketType
+     */
+    'name': string;
+    /**
+     *
+     * @type {string}
+     * @memberof TicketType
+     */
+    'createdAt': string;
+    /**
+     *
+     * @type {string}
+     * @memberof TicketType
+     */
+    'updatedAt': string;
 }
 /**
  *
@@ -1677,6 +1812,25 @@ export interface VehicleBrandModel {
      * @memberof VehicleBrandModel
      */
     'vehicleBrandId': number;
+}
+/**
+ *
+ * @export
+ * @interface VehicleColor
+ */
+export interface VehicleColor {
+    /**
+     *
+     * @type {number}
+     * @memberof VehicleColor
+     */
+    'id': number;
+    /**
+     *
+     * @type {string}
+     * @memberof VehicleColor
+     */
+    'name': string;
 }
 /**
  *
@@ -2610,13 +2764,6 @@ export declare const CranesApiAxiosParamCreator: (configuration?: Configuration)
     cranesControllerRemove: (id: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get tickets for a crane
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    cranesControllerTickets: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
      * @summary Unassign a crane from a user
      * @param {UnassignCraneDto} unassignCraneDto
      * @param {*} [options] Override http request option.
@@ -2737,13 +2884,6 @@ export declare const CranesApiFp: (configuration?: Configuration) => {
     cranesControllerRemove(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
-     * @summary Get tickets for a crane
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    cranesControllerTickets(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
-     *
      * @summary Unassign a crane from a user
      * @param {UnassignCraneDto} unassignCraneDto
      * @param {*} [options] Override http request option.
@@ -2862,13 +3002,6 @@ export declare const CranesApiFactory: (configuration?: Configuration, basePath?
      * @throws {RequiredError}
      */
     cranesControllerRemove(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
-    /**
-     *
-     * @summary Get tickets for a crane
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    cranesControllerTickets(options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      *
      * @summary Unassign a crane from a user
@@ -3003,14 +3136,6 @@ export declare class CranesApi extends BaseAPI {
      * @memberof CranesApi
      */
     cranesControllerRemove(id: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
-     *
-     * @summary Get tickets for a crane
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CranesApi
-     */
-    cranesControllerTickets(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Unassign a crane from a user
@@ -4504,6 +4629,13 @@ export declare const TicketsApiAxiosParamCreator: (configuration?: Configuration
     ticketsControllerFindTickets: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary List all tickets that belong to a driver
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketsControllerFindTicketsByDriverId: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get arrival time for a crane to a ticket
      * @param {string} ticketId
      * @param {string} craneId
@@ -4615,6 +4747,13 @@ export declare const TicketsApiFp: (configuration?: Configuration) => {
     ticketsControllerFindTickets(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Ticket>>>;
     /**
      *
+     * @summary List all tickets that belong to a driver
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Ticket>>>;
+    /**
+     *
      * @summary Get arrival time for a crane to a ticket
      * @param {string} ticketId
      * @param {string} craneId
@@ -4724,6 +4863,13 @@ export declare const TicketsApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     ticketsControllerFindTickets(options?: RawAxiosRequestConfig): AxiosPromise<Array<Ticket>>;
+    /**
+     *
+     * @summary List all tickets that belong to a driver
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): AxiosPromise<Array<Ticket>>;
     /**
      *
      * @summary Get arrival time for a crane to a ticket
@@ -4845,6 +4991,14 @@ export declare class TicketsApi extends BaseAPI {
      * @memberof TicketsApi
      */
     ticketsControllerFindTickets(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Ticket[], any>>;
+    /**
+     *
+     * @summary List all tickets that belong to a driver
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TicketsApi
+     */
+    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Ticket[], any>>;
     /**
      *
      * @summary Get arrival time for a crane to a ticket
@@ -5554,6 +5708,94 @@ export declare class VehicleBrandsApi extends BaseAPI {
      * @memberof VehicleBrandsApi
      */
     vehicleBrandsControllerUpdate(id: string, updateVehicleBrandDto: UpdateVehicleBrandDto, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VehicleBrand, any>>;
+}
+/**
+ * VehicleColorsApi - axios parameter creator
+ * @export
+ */
+export declare const VehicleColorsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Create vehicle color
+     * @param {CreateVehicleColorDto} createVehicleColorDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    vehicleColorsControllerCreate: (createVehicleColorDto: CreateVehicleColorDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary List all vehicle colors
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    vehicleColorsControllerFindAll: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * VehicleColorsApi - functional programming interface
+ * @export
+ */
+export declare const VehicleColorsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Create vehicle color
+     * @param {CreateVehicleColorDto} createVehicleColorDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    vehicleColorsControllerCreate(createVehicleColorDto: CreateVehicleColorDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VehicleColor>>;
+    /**
+     *
+     * @summary List all vehicle colors
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    vehicleColorsControllerFindAll(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<VehicleColor>>>;
+};
+/**
+ * VehicleColorsApi - factory interface
+ * @export
+ */
+export declare const VehicleColorsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Create vehicle color
+     * @param {CreateVehicleColorDto} createVehicleColorDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    vehicleColorsControllerCreate(createVehicleColorDto: CreateVehicleColorDto, options?: RawAxiosRequestConfig): AxiosPromise<VehicleColor>;
+    /**
+     *
+     * @summary List all vehicle colors
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    vehicleColorsControllerFindAll(options?: RawAxiosRequestConfig): AxiosPromise<Array<VehicleColor>>;
+};
+/**
+ * VehicleColorsApi - object-oriented interface
+ * @export
+ * @class VehicleColorsApi
+ * @extends {BaseAPI}
+ */
+export declare class VehicleColorsApi extends BaseAPI {
+    /**
+     *
+     * @summary Create vehicle color
+     * @param {CreateVehicleColorDto} createVehicleColorDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VehicleColorsApi
+     */
+    vehicleColorsControllerCreate(createVehicleColorDto: CreateVehicleColorDto, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VehicleColor, any>>;
+    /**
+     *
+     * @summary List all vehicle colors
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VehicleColorsApi
+     */
+    vehicleColorsControllerFindAll(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VehicleColor[], any>>;
 }
 /**
  * VehicleTypesApi - axios parameter creator
