@@ -20,11 +20,16 @@ Name | Type | Description | Notes
 **vehicleTypeId** | **number** |  | [default to undefined]
 **vehicleType** | [**VehicleType**](VehicleType.md) |  | [default to undefined]
 **vehicleBrandId** | **number** |  | [default to undefined]
+**vehicleBrand** | [**VehicleBrand**](VehicleBrand.md) |  | [default to undefined]
 **vehicleBrandModelId** | **number** |  | [default to undefined]
+**vehicleBrandModel** | [**VehicleBrandModel**](VehicleBrandModel.md) |  | [default to undefined]
 **vehicleYear** | **number** |  | [default to undefined]
 **vehicleColorId** | **number** |  | [default to undefined]
+**vehicleColor** | [**VehicleColor**](VehicleColor.md) |  | [default to undefined]
 **vehicleWheelTypeId** | **number** |  | [default to undefined]
+**vehicleWheelType** | [**VehicleWheelType**](VehicleWheelType.md) |  | [default to undefined]
 **vehicleGearBoxTypeId** | **number** |  | [default to undefined]
+**vehicleGearBoxType** | [**GearBoxType**](GearBoxType.md) |  | [default to undefined]
 **vehicleTractionTypeId** | **number** |  | [default to undefined]
 **vehicleTractionType** | [**TractionType**](TractionType.md) |  | [default to undefined]
 **vehicleHeight** | **number** |  | [default to undefined]
@@ -83,11 +88,16 @@ const instance: Ticket = {
     vehicleTypeId,
     vehicleType,
     vehicleBrandId,
+    vehicleBrand,
     vehicleBrandModelId,
+    vehicleBrandModel,
     vehicleYear,
     vehicleColorId,
+    vehicleColor,
     vehicleWheelTypeId,
+    vehicleWheelType,
     vehicleGearBoxTypeId,
+    vehicleGearBoxType,
     vehicleTractionTypeId,
     vehicleTractionType,
     vehicleHeight,

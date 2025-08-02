@@ -5,7 +5,8 @@
   "main": "dist/api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate:api-types": "openapi-generator-cli generate -i http://localhost:3000/api-json -g typescript-axios -o src/api"
+    "generate:api-types": "openapi-generator-cli generate -i http://localhost:3000/api-json -g typescript-axios -o src/api",
+    "build": "npm run generate:api-types && tsc"
   },
   "keywords": [],
   "author": "",

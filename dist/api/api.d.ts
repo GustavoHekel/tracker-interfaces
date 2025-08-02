@@ -1242,10 +1242,22 @@ export interface Ticket {
     'vehicleBrandId': number;
     /**
      *
+     * @type {VehicleBrand}
+     * @memberof Ticket
+     */
+    'vehicleBrand': VehicleBrand;
+    /**
+     *
      * @type {number}
      * @memberof Ticket
      */
     'vehicleBrandModelId': number;
+    /**
+     *
+     * @type {VehicleBrandModel}
+     * @memberof Ticket
+     */
+    'vehicleBrandModel': VehicleBrandModel;
     /**
      *
      * @type {number}
@@ -1260,16 +1272,34 @@ export interface Ticket {
     'vehicleColorId': number;
     /**
      *
+     * @type {VehicleColor}
+     * @memberof Ticket
+     */
+    'vehicleColor': VehicleColor;
+    /**
+     *
      * @type {number}
      * @memberof Ticket
      */
     'vehicleWheelTypeId': number;
     /**
      *
+     * @type {VehicleWheelType}
+     * @memberof Ticket
+     */
+    'vehicleWheelType': VehicleWheelType;
+    /**
+     *
      * @type {number}
      * @memberof Ticket
      */
     'vehicleGearBoxTypeId': number;
+    /**
+     *
+     * @type {GearBoxType}
+     * @memberof Ticket
+     */
+    'vehicleGearBoxType': GearBoxType;
     /**
      *
      * @type {number}
