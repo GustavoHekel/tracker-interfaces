@@ -1,6 +1,5 @@
 .gitignore
 .npmignore
-.openapi-generator-ignore
 api.ts
 base.ts
 common.ts
@@ -29,6 +28,7 @@ docs/CreateTicketDto.md
 docs/CreateUserDto.md
 docs/CreateVehicleBrandDto.md
 docs/CreateVehicleBrandModelDto.md
+docs/CreateVehicleColorDto.md
 docs/CreateVehicleTypeDto.md
 docs/DelayValue.md
 docs/DelaysApi.md
@@ -53,6 +53,8 @@ docs/Settlement.md
 docs/SettlementsApi.md
 docs/SirEventDto.md
 docs/Ticket.md
+docs/TicketStatus.md
+docs/TicketType.md
 docs/TicketsApi.md
 docs/TractionType.md
 docs/TractionTypesApi.md
@@ -70,6 +72,8 @@ docs/VehicleBrand.md
 docs/VehicleBrandModel.md
 docs/VehicleBrandModelsApi.md
 docs/VehicleBrandsApi.md
+docs/VehicleColor.md
+docs/VehicleColorsApi.md
 docs/VehicleType.md
 docs/VehicleTypesApi.md
 docs/VehicleWheelType.md

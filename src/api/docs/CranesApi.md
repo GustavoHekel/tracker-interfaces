@@ -16,7 +16,6 @@ All URIs are relative to *http://localhost*
 |[**cranesControllerGetCranesDriveFinished**](#cranescontrollergetcranesdrivefinished) | **GET** /cranes/cranesDriveFinished | Get cranes with finished drives|
 |[**cranesControllerGetCranesStatus**](#cranescontrollergetcranesstatus) | **GET** /cranes/cranesStatus | Get the status of all cranes|
 |[**cranesControllerRemove**](#cranescontrollerremove) | **DELETE** /cranes/{id} | Delete a crane|
-|[**cranesControllerTickets**](#cranescontrollertickets) | **GET** /cranes/tickets | Get tickets for a crane|
 |[**cranesControllerUnassign**](#cranescontrollerunassign) | **POST** /cranes/unassign | Unassign a crane from a user|
 |[**cranesControllerUpdate**](#cranescontrollerupdate) | **PATCH** /cranes/{id} | Update a crane|
 
@@ -602,49 +601,6 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**204** | The record has been successfully deleted. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **cranesControllerTickets**
-> cranesControllerTickets()
-
-
-### Example
-
-```typescript
-import {
-    CranesApi,
-    Configuration
-} from './api';
-
-const configuration = new Configuration();
-const apiInstance = new CranesApi(configuration);
-
-const { status, data } = await apiInstance.cranesControllerTickets();
-```
-
-### Parameters
-This endpoint does not have any parameters.
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | A list of tickets for the crane. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

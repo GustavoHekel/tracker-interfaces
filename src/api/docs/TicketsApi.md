@@ -12,6 +12,7 @@ All URIs are relative to *http://localhost*
 |[**ticketsControllerFindAllBeta**](#ticketscontrollerfindallbeta) | **GET** /tickets/beta | List all tickets (beta)|
 |[**ticketsControllerFindOne**](#ticketscontrollerfindone) | **GET** /tickets/{id} | Get a ticket by id|
 |[**ticketsControllerFindTickets**](#ticketscontrollerfindtickets) | **GET** /tickets/board | Find tickets for board|
+|[**ticketsControllerFindTicketsByDriverId**](#ticketscontrollerfindticketsbydriverid) | **GET** /tickets/by-driver | List all tickets that belong to a driver|
 |[**ticketsControllerGetArrivalTimeCrane**](#ticketscontrollergetarrivaltimecrane) | **GET** /tickets/arrival-time/{ticketId}/{craneId} | Get arrival time for a crane to a ticket|
 |[**ticketsControllerGetNearbyCranes**](#ticketscontrollergetnearbycranes) | **GET** /tickets/{id}/nearby-cranes | Get nearby cranes for a ticket|
 |[**ticketsControllerRemove**](#ticketscontrollerremove) | **DELETE** /tickets/{id} | Delete a ticket|
@@ -400,6 +401,49 @@ This endpoint does not have any parameters.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | List of tickets for the board. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ticketsControllerFindTicketsByDriverId**
+> Array<Ticket> ticketsControllerFindTicketsByDriverId()
+
+
+### Example
+
+```typescript
+import {
+    TicketsApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new TicketsApi(configuration);
+
+const { status, data } = await apiInstance.ticketsControllerFindTicketsByDriverId();
+```
+
+### Parameters
+This endpoint does not have any parameters.
+
+
+### Return type
+
+**Array<Ticket>**
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | List all tickets that belong to a driver. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
