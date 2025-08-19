@@ -463,7 +463,7 @@ export interface CreateTicketDto {
      * @type {number}
      * @memberof CreateTicketDto
      */
-    'statusId': number;
+    'ticketStatusId': number;
     /**
      * 
      * @type {object}
@@ -481,7 +481,7 @@ export interface CreateTicketDto {
      * @type {number}
      * @memberof CreateTicketDto
      */
-    'sirId': number;
+    'externalId': number;
     /**
      * 
      * @type {number}
@@ -1529,6 +1529,12 @@ export interface Ticket {
      * @memberof Ticket
      */
     'ordinalInDay': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Ticket
+     */
+    'vehicleIssues': Array<string>;
 }
 /**
  * 
@@ -2655,6 +2661,36 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Refresh token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authControllerRefresh: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/auth/refresh`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -2703,6 +2739,18 @@ export const AuthApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['AuthApi.authControllerLogout']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @summary Refresh token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authControllerRefresh(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authControllerRefresh(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.authControllerRefresh']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -2741,6 +2789,15 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          */
         authControllerLogout(logoutDto: LogoutDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.authControllerLogout(logoutDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Refresh token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authControllerRefresh(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.authControllerRefresh(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2785,6 +2842,17 @@ export class AuthApi extends BaseAPI {
      */
     public authControllerLogout(logoutDto: LogoutDto, options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).authControllerLogout(logoutDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Refresh token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public authControllerRefresh(options?: RawAxiosRequestConfig) {
+        return AuthApiFp(this.configuration).authControllerRefresh(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -5904,88 +5972,6 @@ export const LocationsApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @summary Delete a location
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerRemove: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('locationsControllerRemove', 'id', id)
-            const localVarPath = `/locations/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Update a location
-         * @param {string} id 
-         * @param {object} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerUpdate: async (id: string, body: object, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('locationsControllerUpdate', 'id', id)
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('locationsControllerUpdate', 'body', body)
-            const localVarPath = `/locations/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -6034,33 +6020,6 @@ export const LocationsApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['LocationsApi.locationsControllerFindOne']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
-        /**
-         * 
-         * @summary Delete a location
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async locationsControllerRemove(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.locationsControllerRemove(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['LocationsApi.locationsControllerRemove']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Update a location
-         * @param {string} id 
-         * @param {object} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async locationsControllerUpdate(id: string, body: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.locationsControllerUpdate(id, body, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['LocationsApi.locationsControllerUpdate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
     }
 };
 
@@ -6099,27 +6058,6 @@ export const LocationsApiFactory = function (configuration?: Configuration, base
          */
         locationsControllerFindOne(id: string, options?: RawAxiosRequestConfig): AxiosPromise<Location> {
             return localVarFp.locationsControllerFindOne(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Delete a location
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerRemove(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.locationsControllerRemove(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Update a location
-         * @param {string} id 
-         * @param {object} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerUpdate(id: string, body: object, options?: RawAxiosRequestConfig): AxiosPromise<Location> {
-            return localVarFp.locationsControllerUpdate(id, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -6164,31 +6102,6 @@ export class LocationsApi extends BaseAPI {
      */
     public locationsControllerFindOne(id: string, options?: RawAxiosRequestConfig) {
         return LocationsApiFp(this.configuration).locationsControllerFindOne(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Delete a location
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocationsApi
-     */
-    public locationsControllerRemove(id: string, options?: RawAxiosRequestConfig) {
-        return LocationsApiFp(this.configuration).locationsControllerRemove(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Update a location
-     * @param {string} id 
-     * @param {object} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocationsApi
-     */
-    public locationsControllerUpdate(id: string, body: object, options?: RawAxiosRequestConfig) {
-        return LocationsApiFp(this.configuration).locationsControllerUpdate(id, body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -8278,7 +8191,7 @@ export const TicketsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Ticket>>> {
+        async ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.ticketsControllerFindTicketsByDriverId(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TicketsApi.ticketsControllerFindTicketsByDriverId']?.[localVarOperationServerIndex]?.url;
@@ -8446,7 +8359,7 @@ export const TicketsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): AxiosPromise<Array<Ticket>> {
+        ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.ticketsControllerFindTicketsByDriverId(options).then((request) => request(axios, basePath));
         },
         /**

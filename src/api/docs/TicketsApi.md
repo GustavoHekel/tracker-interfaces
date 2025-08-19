@@ -405,7 +405,7 @@ This endpoint does not have any parameters.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ticketsControllerFindTicketsByDriverId**
-> Array<Ticket> ticketsControllerFindTicketsByDriverId()
+> object ticketsControllerFindTicketsByDriverId()
 
 
 ### Example
@@ -428,7 +428,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-**Array<Ticket>**
+**object**
 
 ### Authorization
 

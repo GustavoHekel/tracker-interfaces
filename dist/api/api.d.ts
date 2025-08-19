@@ -453,7 +453,7 @@ export interface CreateTicketDto {
      * @type {number}
      * @memberof CreateTicketDto
      */
-    'statusId': number;
+    'ticketStatusId': number;
     /**
      *
      * @type {object}
@@ -471,7 +471,7 @@ export interface CreateTicketDto {
      * @type {number}
      * @memberof CreateTicketDto
      */
-    'sirId': number;
+    'externalId': number;
     /**
      *
      * @type {number}
@@ -1516,6 +1516,12 @@ export interface Ticket {
      * @memberof Ticket
      */
     'ordinalInDay': string;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof Ticket
+     */
+    'vehicleIssues': Array<string>;
 }
 /**
  *
@@ -2215,6 +2221,13 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @throws {RequiredError}
      */
     authControllerLogout: (logoutDto: LogoutDto, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Refresh token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authControllerRefresh: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthApi - functional programming interface
@@ -2244,6 +2257,13 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     authControllerLogout(logoutDto: LogoutDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Refresh token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authControllerRefresh(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * AuthApi - factory interface
@@ -2273,6 +2293,13 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     authControllerLogout(logoutDto: LogoutDto, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @summary Refresh token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authControllerRefresh(options?: RawAxiosRequestConfig): AxiosPromise<void>;
 };
 /**
  * AuthApi - object-oriented interface
@@ -2307,6 +2334,14 @@ export declare class AuthApi extends BaseAPI {
      * @memberof AuthApi
      */
     authControllerLogout(logoutDto: LogoutDto, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Refresh token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    authControllerRefresh(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
 }
 /**
  * BasesApi - axios parameter creator
@@ -3752,23 +3787,6 @@ export declare const LocationsApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     locationsControllerFindOne: (id: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Delete a location
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    locationsControllerRemove: (id: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Update a location
-     * @param {string} id
-     * @param {object} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    locationsControllerUpdate: (id: string, body: object, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * LocationsApi - functional programming interface
@@ -3798,23 +3816,6 @@ export declare const LocationsApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     locationsControllerFindOne(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>>;
-    /**
-     *
-     * @summary Delete a location
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    locationsControllerRemove(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
-    /**
-     *
-     * @summary Update a location
-     * @param {string} id
-     * @param {object} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    locationsControllerUpdate(id: string, body: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>>;
 };
 /**
  * LocationsApi - factory interface
@@ -3844,23 +3845,6 @@ export declare const LocationsApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     locationsControllerFindOne(id: string, options?: RawAxiosRequestConfig): AxiosPromise<Location>;
-    /**
-     *
-     * @summary Delete a location
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    locationsControllerRemove(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
-    /**
-     *
-     * @summary Update a location
-     * @param {string} id
-     * @param {object} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    locationsControllerUpdate(id: string, body: object, options?: RawAxiosRequestConfig): AxiosPromise<Location>;
 };
 /**
  * LocationsApi - object-oriented interface
@@ -3895,25 +3879,6 @@ export declare class LocationsApi extends BaseAPI {
      * @memberof LocationsApi
      */
     locationsControllerFindOne(id: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Location, any>>;
-    /**
-     *
-     * @summary Delete a location
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocationsApi
-     */
-    locationsControllerRemove(id: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
-    /**
-     *
-     * @summary Update a location
-     * @param {string} id
-     * @param {object} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocationsApi
-     */
-    locationsControllerUpdate(id: string, body: object, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Location, any>>;
 }
 /**
  * PaymentsApi - axios parameter creator
@@ -4781,7 +4746,7 @@ export declare const TicketsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Ticket>>>;
+    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>>;
     /**
      *
      * @summary Get arrival time for a crane to a ticket
@@ -4899,7 +4864,7 @@ export declare const TicketsApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): AxiosPromise<Array<Ticket>>;
+    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): AxiosPromise<object>;
     /**
      *
      * @summary Get arrival time for a crane to a ticket
@@ -5028,7 +4993,7 @@ export declare class TicketsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TicketsApi
      */
-    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Ticket[], any>>;
+    ticketsControllerFindTicketsByDriverId(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<object, any>>;
     /**
      *
      * @summary Get arrival time for a crane to a ticket

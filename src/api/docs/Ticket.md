@@ -66,6 +66,7 @@ Name | Type | Description | Notes
 **containsErrors** | **boolean** |  | [default to undefined]
 **originalTicketId** | **number** |  | [default to undefined]
 **ordinalInDay** | **string** |  | [default to undefined]
+**vehicleIssues** | **Array&lt;string&gt;** |  | [default to undefined]
 
 ## Example
 
@@ -134,6 +135,7 @@ const instance: Ticket = {
     containsErrors,
     originalTicketId,
     ordinalInDay,
+    vehicleIssues,
 };
 ```
 

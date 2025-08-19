@@ -722,6 +722,31 @@ const AuthApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         *
+         * @summary Refresh token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authControllerRefresh: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/refresh`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 exports.AuthApiAxiosParamCreator = AuthApiAxiosParamCreator;
@@ -779,6 +804,21 @@ const AuthApiFp = function (configuration) {
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
+        /**
+         *
+         * @summary Refresh token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authControllerRefresh(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.authControllerRefresh(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.authControllerRefresh']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
     };
 };
 exports.AuthApiFp = AuthApiFp;
@@ -817,6 +857,15 @@ const AuthApiFactory = function (configuration, basePath, axios) {
          */
         authControllerLogout(logoutDto, options) {
             return localVarFp.authControllerLogout(logoutDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Refresh token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authControllerRefresh(options) {
+            return localVarFp.authControllerRefresh(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -859,6 +908,16 @@ class AuthApi extends base_1.BaseAPI {
      */
     authControllerLogout(logoutDto, options) {
         return (0, exports.AuthApiFp)(this.configuration).authControllerLogout(logoutDto, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Refresh token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    authControllerRefresh(options) {
+        return (0, exports.AuthApiFp)(this.configuration).authControllerRefresh(options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.AuthApi = AuthApi;
@@ -3798,75 +3857,6 @@ const LocationsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
-        /**
-         *
-         * @summary Delete a location
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerRemove: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('locationsControllerRemove', 'id', id);
-            const localVarPath = `/locations/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication bearer required
-            // http bearer authentication required
-            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *
-         * @summary Update a location
-         * @param {string} id
-         * @param {object} body
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerUpdate: (id_1, body_1, ...args_1) => __awaiter(this, [id_1, body_1, ...args_1], void 0, function* (id, body, options = {}) {
-            // verify required parameter 'id' is not null or undefined
-            (0, common_1.assertParamExists)('locationsControllerUpdate', 'id', id);
-            // verify required parameter 'body' is not null or undefined
-            (0, common_1.assertParamExists)('locationsControllerUpdate', 'body', body);
-            const localVarPath = `/locations/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication bearer required
-            // http bearer authentication required
-            yield (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
     };
 };
 exports.LocationsApiAxiosParamCreator = LocationsApiAxiosParamCreator;
@@ -3924,39 +3914,6 @@ const LocationsApiFp = function (configuration) {
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
-        /**
-         *
-         * @summary Delete a location
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerRemove(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.locationsControllerRemove(id, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['LocationsApi.locationsControllerRemove']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         *
-         * @summary Update a location
-         * @param {string} id
-         * @param {object} body
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerUpdate(id, body, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.locationsControllerUpdate(id, body, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['LocationsApi.locationsControllerUpdate']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
     };
 };
 exports.LocationsApiFp = LocationsApiFp;
@@ -3995,27 +3952,6 @@ const LocationsApiFactory = function (configuration, basePath, axios) {
          */
         locationsControllerFindOne(id, options) {
             return localVarFp.locationsControllerFindOne(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Delete a location
-         * @param {string} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerRemove(id, options) {
-            return localVarFp.locationsControllerRemove(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Update a location
-         * @param {string} id
-         * @param {object} body
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        locationsControllerUpdate(id, body, options) {
-            return localVarFp.locationsControllerUpdate(id, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -4058,29 +3994,6 @@ class LocationsApi extends base_1.BaseAPI {
      */
     locationsControllerFindOne(id, options) {
         return (0, exports.LocationsApiFp)(this.configuration).locationsControllerFindOne(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Delete a location
-     * @param {string} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocationsApi
-     */
-    locationsControllerRemove(id, options) {
-        return (0, exports.LocationsApiFp)(this.configuration).locationsControllerRemove(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Update a location
-     * @param {string} id
-     * @param {object} body
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof LocationsApi
-     */
-    locationsControllerUpdate(id, body, options) {
-        return (0, exports.LocationsApiFp)(this.configuration).locationsControllerUpdate(id, body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.LocationsApi = LocationsApi;

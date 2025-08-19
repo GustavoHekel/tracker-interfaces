@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**statusId** | **number** |  | [default to undefined]
+**ticketStatusId** | **number** |  | [default to undefined]
 **metadata** | **object** |  | [default to undefined]
 **metadataJson** | **object** |  | [default to undefined]
-**sirId** | **number** |  | [default to undefined]
+**externalId** | **number** |  | [default to undefined]
 **ticketTypeId** | **number** |  | [default to undefined]
 **clientId** | **number** |  | [default to undefined]
 **customer** | **string** |  | [default to undefined]
@@ -55,10 +55,10 @@ Name | Type | Description | Notes
 import { CreateTicketDto } from './api';
 
 const instance: CreateTicketDto = {
-    statusId,
+    ticketStatusId,
     metadata,
     metadataJson,
-    sirId,
+    externalId,
     ticketTypeId,
     clientId,
     customer,
